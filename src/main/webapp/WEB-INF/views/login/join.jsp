@@ -34,6 +34,10 @@
 	<label>비밀번호 확인: </label>
 	<input type="password" name="join_pwd_confirm" placeholder="비밀번호를 입력하세요."/><br>
 	
+	<label>성별: </label>
+	<input type="radio" name="join_sex" value="man" checked/><label>man</label>
+	<input type="radio" name="join_sex" value="woman"/><label>woman</label><br>
+	
 	<label>이름: </label>
 	<input type="text" name="join_name" placeholder=""/><br>
 	
