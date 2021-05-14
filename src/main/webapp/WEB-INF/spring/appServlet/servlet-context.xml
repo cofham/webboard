@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd">
+		
+	<!-- URL 매핑, annotation-driven을 통해 @RequestMapping 사용 가능 -->
+	<mvc:annotation-driven/>
+	<mvc:resources mapping="/resources/**" location="/resources/"/>
+	
+	<!-- InternalResourceViewResolver를 통해 뷰를 찾는다.
+		전달받은 ~~ 앞에 /WEB-INF/views/ 를 붙이고 뒤에는 .jsp를 붙인다. -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- @Controller,@Repository,@Service,@Component 어노테이션이 사용된 클래스를 자동으로 스캔하여 빈으로 등록 -->	
+	<context:component-scan base-package="board.app"/>
+</beans>
+
+<!-- 브라우저의 요청으로부터 요청을 처리할 controller를 이어주는 작업 -->
