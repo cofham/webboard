@@ -5,5 +5,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+<%@ page import="java.util.*" %>
+
 <link href="<c:url value='/resources/css/main.css'/>" rel="stylesheet"/>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.6.0.min.js'/>"></script>

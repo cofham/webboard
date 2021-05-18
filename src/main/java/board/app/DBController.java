@@ -1,8 +1,11 @@
 package board.app;
 
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,8 +15,10 @@ public class DBController {
 	
 	
 	@RequestMapping(value="/selectDB.do")
-	public String Select() {
+	public String Select(Model model){
 		
+		DBConnect db = new DBConnect();
+		db.select(model);
 		
 		return "list";
 	}
