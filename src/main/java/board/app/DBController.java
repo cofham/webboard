@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class DBController {
 	
-	
 	@RequestMapping(value="/selectDB.do")
 	public String Select(Model model){
 		

@@ -1,10 +1,7 @@
 <html>
 <body>
-	${user_id }
-	${user_pwd }
-	${user_sex }
-	${user_name }
-	${user_hp }
-	${user_mail }
+	<h2>
+		로그인 성공
+	</h2>
 </body>
 </html>

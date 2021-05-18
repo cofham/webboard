@@ -109,6 +109,55 @@ public class DBConnect {
 				System.out.println("SQLException : "+e);
 			}
 		}
-		
+	}
+	
+	public int login(String login_id,String login_pwd) {
+
+		StringBuilder sb = new StringBuilder();
+		String sql = sb.append("SELECT * FROM member WHERE id=")
+				.append("'"+login_id+"'").append(" && pwd=")
+				.append("'"+login_pwd+"'").toString();
+
+		try {
+			Class.forName(jdbcDriver);
+			conn = DriverManager.getConnection(url,mysqlId,mysqlPwd);
+			System.out.println("연결 성공");
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			String find_id = null;
+			String find_pwd = null;
+			
+			while(rs.next()) {
+				find_id = rs.getString("id");
+				find_pwd = rs.getString("pwd");
+			}
+			if(find_id == null || find_pwd == null) {
+				return 0;
+			}
+			else if(find_id != null && find_pwd != null) {
+				return 1;
+			}
+		}
+		catch(ClassNotFoundException e) {
+			System.out.println("ClassNotFoundException : "+e);
+		}
+		catch(SQLException e) {
+			System.out.println("SQLException : "+e);
+		}
+		catch(Exception e) {
+			System.out.println("Exception : "+e);
+		}
+		finally {
+			try {
+				if(conn!=null &&!conn.isClosed()) {
+					conn.close();
+				}
+			}
+			catch(SQLException e) {
+				System.out.println("SQLException : "+e);
+			}
+		}
+		return -1;
 	}
 }
